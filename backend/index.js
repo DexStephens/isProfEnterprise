@@ -9,7 +9,7 @@ const knex = require("knex")({
         host:"isprofdb.cwfm1szckd36.us-east-2.rds.amazonaws.com",
         user: "admin",
         password: "profassignment",
-        database:"isprofdb",
+        database:"isprofessors",
         port: 3306,
     },
 });
