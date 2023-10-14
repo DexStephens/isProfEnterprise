@@ -19,7 +19,7 @@ app.use(cors())
 app.get("/api/", (req, res) => {
     knex
       .select()
-      .from("professors")
+      .from("professor")
       .orderBy("name") // Add the ORDER BY clause here
       .then((result) => {
         console.log(result);
