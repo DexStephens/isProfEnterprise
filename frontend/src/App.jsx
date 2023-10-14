@@ -15,6 +15,7 @@ function App() {
     axios.get(url).then((resp) => {
       if (resp.status === 200) {
         setOriginalProfessors(resp.data)
+        setProfessors(resp.data)
       } else {
         console.log("Error retrieving data", resp.status)
       }
@@ -23,12 +24,6 @@ function App() {
       console.log("Error", error)
     )
   }, [])
-
-  useEffect(() => {
-    if (originalProfessors.length > 0) {
-      setProfessors(originalProfessors)
-    }
-  }, [originalProfessors])
 
   useEffect(() => {
     if (filter != "") {
