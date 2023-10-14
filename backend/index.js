@@ -118,7 +118,7 @@ const knex = require("knex")({
 
 app.use(cors())
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
     // knex
     //   .select()
     //   .from("professors")
