@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Other head elements like scripts, etc. -->
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="text-2xl font-weight-bold text-primary mb-4">IS Professors</h1>
+        <div class="mb-4">
+            <input value="<%= filter %>" onchange="updateSearch(this.value)" type="text" class="form-control" placeholder="Search Professors">
+        </div>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <% professors.forEach((professor) => { %>
+                <div key="<%= professor.name %>" class="col">
+                    <div class="card shadow-sm">
+                        <img src="<%= professor.image %>" alt="Professor 1" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h2 class="card-title h5 text-primary"><%= professor.name %></h2>
+                            <p class="card-text text-muted"><%= professor.title %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+    <script>
+        function updateSearch(value) {
+            // Get the current URL
+            var currentURL = window.location.href;
+
+            // Get the current search parameters as an object
+            var searchParams = new URLSearchParams(window.location.search);
+
+            // Change the value of a parameter or add a new one
+            searchParams.set('search', value);
+
+            // Update the search property of the window.location object
+            window.location.search = searchParams.toString();
+        }
+    </script>
+    <!-- Bootstrap JS CDN (Popper.js and Bootstrap JS) -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

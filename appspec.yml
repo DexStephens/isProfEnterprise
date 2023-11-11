@@ -3,7 +3,7 @@ os: linux
 # copy all files from CodeCommit to app directory
 files:
   - source: /
-    destination: /usr/share/nginx/html
+    destination: /home/ec2-user/app
 permissions:
   - object: /
     pattern: "**"
