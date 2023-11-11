@@ -12,9 +12,9 @@ app.set('views', path.join(__dirname, 'views'));
 const knex = require("knex")({
         client: "mysql",
         connection: {
-        host:"isprofdb.cwfm1szckd36.us-east-2.rds.amazonaws.com",
+        host:"spencertest2-db.cwfm1szckd36.us-east-2.rds.amazonaws.com",
         user: "admin",
-        password: "profassignment",
+        password: "Password1",
         database:"isprofessors",
         port: 3306,
     },
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
     const { search } = req.query;
   
     //Build the initial knex query
-    let query = knex.select().from("professor").orderBy("name");
+    let query = knex.select().from("professors").orderBy("name");
   
     // Check if the search parameter exists
     if (search) {
