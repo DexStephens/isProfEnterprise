@@ -6,9 +6,9 @@ let app = new express();
 const knex = require("knex")({
         client: "mysql",
         connection: {
-        host:"isprofdb.cwfm1szckd36.us-east-2.rds.amazonaws.com",
+        host:"isprofdb.c9fkgys4lhg9.us-west-1.rds.amazonaws.com",
         user: "admin",
-        password: "profassignment",
+        password: "password",
         database:"isprofessors",
         port: 3306,
     },
