@@ -3,7 +3,7 @@ import { SearchBar } from "./SearchBar"
 import { useState, useEffect } from "react"
 import axios from 'axios'
 
-const url = 'http://isproflb-1377656184.us-west-1.elb.amazonaws.com/api'; // Specify the complete URL including the protocol and host
+const url = 'http://localhost:8000/api'; // Specify the complete URL including the protocol and host
 
 function App() {
 
