@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const url =
-  "http://express-load-balance-805316478.us-west-1.elb.amazonaws.com/api"; // Specify the complete URL including the protocol and host
+  "http://isprof-back-471441940.us-west-1.elb.amazonaws.com/api"; // Specify the complete URL including the protocol and host
 
 function App() {
   const [professors, setProfessors] = useState([]);
