@@ -9,43 +9,88 @@
     <!-- Other head elements like scripts, etc. -->
 </head>
 <body class="bg-light">
-    <div class="container mt-4">
-        <h1 class="text-2xl font-weight-bold text-primary mb-4">IS Professors</h1>
-        <div class="mb-4">
-            <input value="<%= filter %>" onchange="updateSearch(this.value)" type="text" class="form-control" placeholder="Search Professors">
-        </div>
-    
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            <% professors.forEach((professor) => { %>
-                <div key="<%= professor.name %>" class="col">
-                    <div class="card shadow-sm">
-                        <img src="<%= professor.image %>" alt="Professor 1" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h2 class="card-title h5 text-primary"><%= professor.name %></h2>
-                            <p class="card-text text-muted"><%= professor.title %></p>
+    <!-- Dark Grey Navbar using Tailwind CSS -->
+    <nav class="text-white p-2" style="background-color: gray; display: flex; justify-content: space-between;">
+            <!-- Title on the left -->
+            <h1 class="text-2xl font-weight-bold text-white flex-none">IS Professors</h1>
+
+            <!-- Navigation links on the right -->
+            <div style="display: flex; justify-content: space-around; align-items: center; min-width: 15%;">
+                <a class="text-white" href="/" style="text-decoration: none;">Home</a>
+                <a class="text-white" href="/professors" style="text-decoration: none;">Professors</a>
+            </div>
+    </nav>
+
+    <% if (page === 'professors') { %>
+        <div class="container mt-4">
+            <div class="mb-4">
+                <input value="<%= filter %>" onchange="updateSearch(this.value)" type="text" class="form-control"
+                    placeholder="Search Professors">
+            </div>
+        
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <% professors.forEach((professor)=> { %>
+                    <div key="<%= professor.name %>" class="col">
+                        <div class="card shadow-sm">
+                            <img src="<%= professor.image %>" alt="Professor 1" class="card-img-top"
+                                style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <h2 class="card-title h5 text-primary">
+                                    <%= professor.name %>
+                                </h2>
+                                <p class="card-text text-muted">
+                                    <%= professor.title %>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <% }); %>
+                    <% }); %>
+            </div>
         </div>
-    </div>
+    <% } else if (page === 'main') { %>
+        <div class="bg-white p-4" style="display: flex; justify-content: center; min-height: 350px; align-items: center;">
+            <h2 class="text-2xl font-bold mb-4">What is Information Systems?</h2>
+            <p>
+                Information Systems (IS) is a field of study that focuses on the design, development, implementation, and
+                management of computer-based information systems. It encompasses both technical and business aspects to
+                ensure effective use of technology in organizations.
+            </p>
+        </div>
+        
+        <!-- Div with Blue Background - Information Systems Accomplishments at BYU -->
+        <div class="p-4" style="background-color: rgb(191 219 254); min-height: 400px; display: flex; justify-content: center; flex-direction: column;">
+            <h2 class="text-2xl font-bold mb-4">Information Systems at BYU</h2>
+        
+            <!-- Horizontal Cards for Accomplishments -->
+            <div class="space-x-4" style="display: flex; justify-content: space-around;">
+                <!-- Card 1 -->
+                <div class="bg-white text-black p-4 rounded shadow" style="max-width: 25%;">
+                    <h3 class="text-lg font-bold mb-2">Constantly Winning</h3>
+                    <p style="text-wrap: wrap;">Over the last 20 years, our fantastic teams have won tons of awards. We smoke the competition</p>
+                </div>
+        
+                <!-- Card 2 -->
+                <div class="bg-white text-black p-4 rounded shadow" style="max-width: 25%;">
+                    <h3 class="text-lg font-bold mb-2">Stressed Students</h3>
+                    <p style="text-wrap: wrap;">Our students stress about grades more than any other program in the country. If you don't believe it, you should check our slack channel after INTEX grades come out. Really shows the true colors</p>
+                </div>
+        
+                <!-- Card 3 -->
+                <div class="bg-white text-black p-4 rounded shadow" style="max-width: 25%;">
+                    <h3 class="text-lg font-bold mb-2">Amazing Professors</h3>
+                    <p style="text-wrap: wrap;">The best thing about BYU IS is the professors. They care deeply about each student, and put more time and energy into them than imaginable</p>
+                </div>
+            </div>
+        </div>
+    <% } %>
+
     <script>
         function updateSearch(value) {
-            // Get the current URL
             var currentURL = window.location.href;
-
-            // Get the current search parameters as an object
             var searchParams = new URLSearchParams(window.location.search);
-
-            // Change the value of a parameter or add a new one
             searchParams.set('search', value);
-
-            // Update the search property of the window.location object
             window.location.search = searchParams.toString();
         }
     </script>
-    <!-- Bootstrap JS CDN (Popper.js and Bootstrap JS) -->
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -22,7 +22,11 @@ const knex = require("knex")({
 
 // Your Express route
 app.get("/", (req, res) => {
-    const { search } = req.query;
+    res.render("main", { filter: "", professors: [], title: "IS Professors", page: "main"})
+  });
+
+app.get("/professors", (req, res) => {
+  const { search } = req.query;
   
     //Build the initial knex query
     let query = knex.select().from("professors").orderBy("name");
@@ -37,13 +41,12 @@ app.get("/", (req, res) => {
     query
       .then((result) => {
         // Render the EJS template with the results and filter
-        res.render("main", { professors: result, filter: search ? search : '', title: 'IS Professors'})
+        res.render("main", { professors: result, filter: search ? search : '', title: 'IS Professors', page: 'professors'})
       })
       .catch((error) => {
         console.error(error);
         res.status(500).json({ error: 'An error occurred while fetching data.' });
       });
-    
-  });
+})
 
 app.listen(8080);
